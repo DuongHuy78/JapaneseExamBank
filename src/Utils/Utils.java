@@ -35,7 +35,7 @@ import Models.*;
 public class Utils {
 	public static String scanImage(String urlImage) {
 		try {
-			String apiKey = "Your_API_Key_Here"; // Thay thế bằng API Key của bạn
+			String apiKey = "AIzaSyC2-5TvPDBuJzZHRsRNEshXYv_UXVTfvqc"; // Thay thế bằng API Key của bạn
     
         	String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent?key=" + 
             java.net.URLEncoder.encode(apiKey, "UTF-8");
