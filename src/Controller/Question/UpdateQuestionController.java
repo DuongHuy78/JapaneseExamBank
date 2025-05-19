@@ -4,7 +4,6 @@ import Models.Answers;
 import Models.Questions;
 import Dao.QuestionsDAO;
 import Dao.AnswersDAO;
-import Utils.Utils;
 import View.Question.UpdateQuestionUI;
 import View.Question.ShowQuestionUI;
 

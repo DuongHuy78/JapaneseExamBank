@@ -35,7 +35,7 @@ import Models.*;
 public class Utils {
 	public static String scanImage(String urlImage) {
 		try {
-			String apiKey = "AIzaSyC2-5TvPDBuJzZHRsRNEshXYv_UXVTfvqc";
+			String apiKey = "Your_API_Key_Here"; // Thay thế bằng API Key của bạn
     
         	String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent?key=" + 
             java.net.URLEncoder.encode(apiKey, "UTF-8");
@@ -209,7 +209,7 @@ public class Utils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 1; // trả về 1 nếu ko có
+		return 1;
 	}
 
 	public static int getNextQuestionId() {
@@ -224,7 +224,7 @@ public class Utils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 1; // trả về 1 nếu ko có
+		return 1;
 	}
 
 	public static int getNextExamId() {
@@ -239,7 +239,7 @@ public class Utils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 1; // trả về 1 nếu ko có
+		return 1;
 	}
 	
 	public static ArrayList<Questions> getRamdomQuestions(String section, int number) {

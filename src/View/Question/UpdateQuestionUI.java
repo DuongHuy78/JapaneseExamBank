@@ -8,7 +8,6 @@ import Models.Questions;
 import View.UI.UI;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateQuestionUI extends JFrame {

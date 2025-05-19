@@ -6,7 +6,6 @@ import Dao.QuestionsDAO;
 import Models.Exams;
 import Models.Exam_Questions;
 import Models.Questions;
-import Utils.Utils;
 import View.Exam.ShowExamUI;
 import View.Exam.UpdateExamUI;
 
@@ -34,13 +33,10 @@ public class UpdateExamController implements ActionListener {
     public UpdateExamController(UpdateExamUI updateExamUI) {
         this.updateExamUI = updateExamUI;
         
-        // Register action listeners
         registerActionListeners();
         
-        // Load exam data
         loadExamData();
         
-        // Load available questions
         loadAvailableQuestions();
     }
 
@@ -88,7 +84,6 @@ public class UpdateExamController implements ActionListener {
                 }
             }
             
-            // Load exam questions
             loadExamQuestions();
         } else {
             JOptionPane.showMessageDialog(updateExamUI,
@@ -102,10 +97,8 @@ public class UpdateExamController implements ActionListener {
         examQuestions = examQuestionsDAO.selectByCondition("ExamID = " + currentExam.getId());
         
         if (examQuestions != null) {
-            // Clear existing data
             updateExamUI.getTableModel().setRowCount(0);
             
-            // Sort by question order
             Collections.sort(examQuestions, new Comparator<Exam_Questions>() {
                 @Override
                 public int compare(Exam_Questions eq1, Exam_Questions eq2) {
@@ -156,7 +149,6 @@ public class UpdateExamController implements ActionListener {
         searchPanel.add(searchField, BorderLayout.CENTER);
         searchPanel.add(searchOptions, BorderLayout.EAST);
         
-        // Create question table
         String[] columnNames = {"ID", "Nội dung", "Phần"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -169,14 +161,12 @@ public class UpdateExamController implements ActionListener {
         questionTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         questionTable.getTableHeader().setReorderingAllowed(false);
         
-        // Set column widths
         questionTable.getColumnModel().getColumn(0).setPreferredWidth(50);
         questionTable.getColumnModel().getColumn(1).setPreferredWidth(350);
         questionTable.getColumnModel().getColumn(2).setPreferredWidth(80);
         
         JScrollPane scrollPane = new JScrollPane(questionTable);
         
-        // Create buttons panel
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));      
         JButton addButton = new JButton("Thêm");
@@ -337,7 +327,6 @@ public class UpdateExamController implements ActionListener {
     }
     
     private void saveExam() {
-        // Get updated exam data
         String title = updateExamUI.getTxtTitle().getText().trim();
         String level = updateExamUI.getComboLevel().getSelectedItem().toString();
         
@@ -355,7 +344,6 @@ public class UpdateExamController implements ActionListener {
         int result = examsDAO.update(currentExam);
         System.out.println("Exam ID: " + currentExam.getId());
         if (result > 0) {
-            // Delete existing exam questions
             ArrayList<Exam_Questions> oldExamQuestions = 
                 examQuestionsDAO.selectByCondition("ExamID = " + currentExam.getId());
                 
@@ -378,7 +366,6 @@ public class UpdateExamController implements ActionListener {
                     "Đã cập nhật đề thi thành công.",
                     "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 
-                // Go back to show exam UI
                 ShowExamUI showExamUI = new ShowExamUI();
                 ShowExamController controller = new ShowExamController(showExamUI);
                 showExamUI.setVisible(true);

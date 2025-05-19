@@ -1,6 +1,5 @@
 package View.Exam;
 
-import Models.Exams;
 import View.UI.UI;
 
 import javax.swing.*;
@@ -10,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
 import Controller.Exam.UpdateExamController;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class UpdateExamUI extends JFrame {
 
