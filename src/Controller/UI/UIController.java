@@ -110,7 +110,7 @@ public class UIController implements ActionListener {
             String extractedText = Utils.scanImage(imagePath);
             String text = Utils.extractTextFromResponse(extractedText);
             
-            ui.getTextAreaExtractedContent().setFont(new Font("MS Gothic", Font.PLAIN, 14));
+            ui.getTextAreaExtractedContent().setFont(new Font("Noto Sans", Font.PLAIN, 14));
             ui.getTextAreaExtractedContent().setText(text);
             JOptionPane.showMessageDialog(ui, "Đã trích xuất nội dung. Vui lòng kiểm tra và chỉnh sửa.", 
                 "Thông Báo", JOptionPane.INFORMATION_MESSAGE);

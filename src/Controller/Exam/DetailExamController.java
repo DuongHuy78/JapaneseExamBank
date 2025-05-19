@@ -13,6 +13,9 @@ import View.Exam.ShowExamUI;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.StyledDocument;
+
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -138,6 +141,8 @@ public class DetailExamController implements ActionListener {
     }
     
     private void displayQuestionDetails(Questions question, int order, StringBuilder sb) {
+        Font font = new Font("Noto Sans", Font.BOLD, 14);
+        detailsExamUI.getQuestionDetailsArea().setFont(font);
         sb.append("Câu ").append(order).append(": ");
         sb.append(question.getContent()).append("\n");
         sb.append("Phần: ").append(question.getSection()).append("\n");
@@ -248,12 +253,12 @@ public class DetailExamController implements ActionListener {
             });
             detailsExamUI.getBtnStopAudio().setEnabled(true);
         } catch (IllegalStateException ise) {
-            // Nếu đã khởi tạo rồi thì chạy luôn
             Platform.runLater(() -> {
                 Media media = new Media(uriString);
                 mediaPlayer = new MediaPlayer(media);
                 mediaPlayer.play();
             });
+            detailsExamUI.getBtnStopAudio().setEnabled(true);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(detailsExamUI,
                 "Có lỗi khi phát file audio: " + ex.getMessage(),

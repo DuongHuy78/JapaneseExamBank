@@ -35,8 +35,8 @@ public class AnswersDAO implements DAOInterface<Models.Answers>{
 	        ps.setBoolean(2, t.isCorrect());
 	        ps.setInt(3, t.getId());
 
-			SQLConnection.closeConnection(conn);
 			ps.executeUpdate();
+			SQLConnection.closeConnection(conn);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();

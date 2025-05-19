@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -184,6 +185,13 @@ public class UI extends JFrame {
 		
 		//helpMenu
 		JMenuItem aboutItem = new JMenuItem("About");
+        aboutItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Show the about dialog
+                JOptionPane.showMessageDialog(current, "Trình Trích Xuất Đề Thi AI\nVersion 1.0\nDeveloped by Lê Dương Huy\nDate started: 16/5/2025", "About", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
 		helpMenu.add(aboutItem);
 
 		menuBar.add(ScanImageMenu);

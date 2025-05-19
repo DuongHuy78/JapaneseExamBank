@@ -37,7 +37,7 @@ public class Utils {
 		try {
 			String apiKey = "AIzaSyC2-5TvPDBuJzZHRsRNEshXYv_UXVTfvqc";
     
-        	String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + 
+        	String apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent?key=" + 
             java.net.URLEncoder.encode(apiKey, "UTF-8");
         	//-preview-04-17
 			URI uri = new URI(apiUrl);
@@ -116,11 +116,9 @@ public class Utils {
 		
 		System.out.println("Văn bản đầu vào: " + text.substring(0, Math.min(text.length(), 100)) + "...");
 		
-		// Chuẩn hóa các dấu xuống dòng
 		text = text.replaceAll("\\r\\n|\\r", "\n");
 		
 		try {
-			// Regex linh hoạt hơn
 			Pattern questionPattern = Pattern.compile(
 				"Section:\\s*(Grammar|Vocabulary|Reading|Listening)\\s*\n" +
 				"(?:Passage:\\s*([\\s\\S]*?)\\s*\n)?" + 
