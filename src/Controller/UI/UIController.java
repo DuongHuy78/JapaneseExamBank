@@ -1,6 +1,5 @@
 package Controller.UI;
 
-import View.*;
 import View.UI.UI;
 import Models.*;
 import Dao.*;
@@ -74,20 +73,16 @@ public class UIController implements ActionListener {
                 int originalWidth = originalIcon.getIconWidth();
                 int originalHeight = originalIcon.getIconHeight();
                 
-                // Lấy kích thước của label
                 int labelWidth = ui.getLblImagePreview().getWidth() > 0 ? ui.getLblImagePreview().getWidth() - 10 : 280;
                 int labelHeight = ui.getLblImagePreview().getHeight() > 0 ? ui.getLblImagePreview().getHeight() - 10 : 180;
                 
-                // Tính toán tỷ lệ khung hình để giữ nguyên tỷ lệ
                 double widthRatio = (double) labelWidth / originalWidth;
                 double heightRatio = (double) labelHeight / originalHeight;
                 double ratio = Math.min(widthRatio, heightRatio);
                 
-                // Tính toán kích thước mới giữ nguyên tỷ lệ
                 int newWidth = (int) (originalWidth * ratio);
                 int newHeight = (int) (originalHeight * ratio);
-                
-                // Thay đổi kích thước ảnh
+                    
                 Image scaledImage = originalIcon.getImage().getScaledInstance(
                     newWidth, newHeight, Image.SCALE_SMOOTH);
                 

@@ -58,7 +58,7 @@ public class Utils {
                     "    {\n" +
                     "      \"parts\": [\n" +
                     "        {\n" +
-                    "          \"text\": \"Read the questions from the image and return ONLY in the following format, no explanation.\\n"
+                    "          \"text\": \"Read the questions from the image and return ONLY the FIRST section found in the following format, no explanation.\\n"
 								    + "If the section is Reading and there is a passage, include the passage in the \\\"Passage\\\" field for each question related to that passage.\\n"
 								    + "Section: [Grammar/Vocabulary/Reading/Listening]\\n"
 								    + "Passage: [Passage content, if any. If not, omit this field.]\\n"
@@ -67,8 +67,7 @@ public class Utils {
 								    + "B. [Option B]\\n"
 								    + "C. [Option C]\\n"
 								    + "D. [Option D]\\n"
-								    + "Answer: [A/B/C/D]\\n"
-								    + "Next question\"\n" +
+								    + "Answer: [Write ONLY the correct answer letter A/B/C/D here]\"\n" +
                     "        },\n" +
                     "        {\n" +
                     "          \"inline_data\": {\n" +
@@ -373,15 +372,25 @@ public class Utils {
                             document.add(new Paragraph("Lỗi hiển thị hình ảnh.", questionFontVN));
                         }
                     }
-					document.add(new Paragraph("A. " + question.getAnswers().get(0).getContent(), answerFont));
-					document.add(new Paragraph("B. " + question.getAnswers().get(1).getContent(), answerFont));
-					document.add(new Paragraph("C. " + question.getAnswers().get(2).getContent(), answerFont));
-					document.add(new Paragraph("D. " + question.getAnswers().get(3).getContent(), answerFont));
-                    document.add(new Paragraph("\n"));
+					if (question.getAnswers() != null && question.getAnswers().size() >= 4) {
+						document.add(new Paragraph("A. " + question.getAnswers().get(0).getContent(), answerFont));
+						document.add(new Paragraph("B. " + question.getAnswers().get(1).getContent(), answerFont));
+						document.add(new Paragraph("C. " + question.getAnswers().get(2).getContent(), answerFont));
+						document.add(new Paragraph("D. " + question.getAnswers().get(3).getContent(), answerFont));
+					} else {
+						document.add(new Paragraph("Câu hỏi này không có đủ 4 đáp án.", questionFontVN));
+						if (question.getAnswers() != null) {
+							char option = 'A';
+							for (Answers answer : question.getAnswers()) {
+								document.add(new Paragraph(option + ". " + answer.getContent(), answerFont));
+								option++;
+							}
+						}
+					}
                 }
 
+				document.add(new Paragraph("Đáp án:", headerFont));
 				for (Exam_Questions eq : exam.getExamQuestions()) {
-					document.add(new Paragraph("Đáp án:", headerFont));
 					document.add(new Paragraph("Câu " + eq.getQuestionOrder() + ":", headerFont));
 					Questions tempQuestion = new Questions(eq.getQuestionId(), null, null, null, null, null);
 					Questions question = qDao.selectById(tempQuestion);

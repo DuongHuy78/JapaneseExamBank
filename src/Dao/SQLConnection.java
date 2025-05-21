@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class SQLConnection {
-	private static String user = "huy";
-	private static String password = "112233";
+	private static String user = "yourUsername";
+	private static String password = "yourPassword";
 	public static Connection getConnection() {
 		Connection c = null;
 		try {
