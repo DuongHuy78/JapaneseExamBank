@@ -17,4 +17,5 @@ The project is implemented using Java for core logic, Java Swing for the graphic
 
 ## Link Demo
 https://youtu.be/2K1MfG-Wa6g
-
+## Link guide
+https://drive.google.com/file/d/1bO75uVNsmsM3JlmNitBbzktB4S2KPRzX/view?usp=sharing
